@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     venues: [],
-    loading: true
+    loading: true,
+    error: false
   },
   mutations: {
     setVenues(state, venues) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
     },
     setLoading(state, value) {
       state.loading = value;
+    },
+    setError(state, value) {
+      state.error = value;
     }
   },
   actions: {
@@ -23,13 +27,14 @@ export default new Vuex.Store({
       commit("setLoading", true);
       VenueService.getVenues(
         venues => {
+          commit("setError", false);
           commit("setVenues", venues);
           commit("setLoading", false);
         },
         error => {
+          commit("setError", error);
           commit("setVenues", []);
           commit("setLoading", false);
-          console.log("There was an error: ", error); 
         }
       );
     }

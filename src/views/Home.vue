@@ -4,8 +4,12 @@
       <fa icon="sync" class="fa-spin fa-10x" />
     </div>
 
-    <div v-else class="card-columns">
+    <div v-else-if="!error" class="card-columns">
       <VenueCard v-for="venue in venues" :venue="venue" :key="venue.id" />
+    </div>
+
+    <div v-else class="alert alert-danger" role="alert">
+      {{ error }}
     </div>
   </div>
 </template>
@@ -20,7 +24,7 @@ export default {
     VenueCard
   },
   methods: mapActions(["fetchVenues"]),
-  computed: mapState(["venues", "loading"]),
+  computed: mapState(["venues", "loading", "error"]),
   created() {
     this.fetchVenues();
   }
