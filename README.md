@@ -1,5 +1,7 @@
 # near-me
 
+Show informations about venues around you.
+
 ## Project setup
 ```
 npm install
