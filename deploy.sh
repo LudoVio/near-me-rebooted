@@ -1,7 +1,4 @@
-#!/usr/bin/env sh
-
-# abort on errors
-set -e
+#! /usr/bin/env sh
 
 # build
 npm run build
