@@ -5,23 +5,19 @@
     </div>
 
     <div v-else class="card-columns">
-      <div class="card" v-for="venue in venues" :key="venue.id">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">{{ venue }}</p>
-        </div>
-      </div>
+      <VenueCard v-for="venue in venues" :venue="venue" :key="venue.id" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import VenueCard from "@/components/VenueCard";
 
 export default {
   name: 'home',
   components: {
-    
+    VenueCard
   },
   methods: mapActions(["fetchVenues"]),
   computed: mapState(["venues", "loading"]),

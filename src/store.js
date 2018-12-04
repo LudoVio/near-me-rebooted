@@ -23,6 +23,7 @@ export default new Vuex.Store({
       commit("setLoading", true);
       VenueService.getVenues(
         venues => {
+          console.log(venues);
           commit("setVenues", venues);
           commit("setLoading", false);
         },
