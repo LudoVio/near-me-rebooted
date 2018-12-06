@@ -1,4 +1,4 @@
-# near-me
+# Near Me Rebooted
 
 Show informations about venues around you.
 
