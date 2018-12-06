@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import VenueService from "@/services/VenueService";
+import FoursquareService from "@/services/FoursquareService";
 
 Vue.use(Vuex)
 
@@ -25,18 +25,17 @@ export default new Vuex.Store({
   actions: {
     fetchVenues({ commit }) {
       commit("setLoading", true);
-      VenueService.getVenues(
-        venues => {
+      FoursquareService.get("venues/explore")
+        .then(venues => {
           commit("setError", false);
           commit("setVenues", venues);
           commit("setLoading", false);
-        },
-        error => {
+        })
+        .catch(error => {
           commit("setError", error);
           commit("setVenues", []);
           commit("setLoading", false);
-        }
-      );
+        });
     }
   }
 })
