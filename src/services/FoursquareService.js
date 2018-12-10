@@ -27,10 +27,10 @@ function request(method, url, params, data) {
 
         apiClient({ method, url, params, data })
           .then(response => {
-            resolve(response.data.response.groups[0].items.map(item => item.venue));
+            resolve(response.data.response);
           })
           .catch(error => {
-            reject(error.response.data.meta.errorDetail);
+            reject(error);
           });
       });
   });

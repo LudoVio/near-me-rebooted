@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    venueSearch: "",
     venues: [],
     loading: true,
     error: false
@@ -23,10 +24,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fetchVenues({ commit }) {
+    fetchVenues({ commit }, params = {}) {
       commit("setLoading", true);
-      FoursquareService.get("venues/explore")
-        .then(venues => {
+      FoursquareService.get("venues/explore", params)
+        .then(data => {
+          const venues = data.groups[0].items.map(item => item.venue);
           commit("setError", false);
           commit("setVenues", venues);
           commit("setLoading", false);

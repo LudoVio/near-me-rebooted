@@ -2,7 +2,7 @@
   <div class="venue-card card">
     <div class="card-body">
       <h5 class="card-title">{{ venue.name }}</h5>
-      <h6 v-if="venue.categories" class="card-subtitle mb-2 text-muted">
+      <h6 v-if="venue.categories.length" class="card-subtitle mb-2 text-muted">
         {{ venue.categories[0].name }}
       </h6>
 

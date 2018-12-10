@@ -16,7 +16,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import VenueCard from "@/components/VenueCard";
+import VenueCard from "../components/VenueCard";
 
 export default {
   name: 'home',
